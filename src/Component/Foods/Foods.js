@@ -21,8 +21,6 @@ class Foods extends Component{
         if(localStorage.getItem('foodAppOrder') !== null){
 
             this.props.emptyOrder();
-
-            console.log(JSON.parse(localStorage.getItem('foodAppOrder')))
             
             this.props.cloneLocal(JSON.parse(localStorage.getItem('foodAppOrder')));
             
@@ -38,13 +36,7 @@ class Foods extends Component{
 
     componentDidUpdate(prevProps, prevState) {
 
-        console.log('didUpdate');
-
         if(prevState.orderFlag !== this.state.orderFlag){
-
-
-            console.log('didUpdate if');
-
 
             localStorage.setItem('foodAppCart', JSON.stringify(this.props.reduxCart));
 
@@ -64,7 +56,9 @@ class Foods extends Component{
 
         const foodName = e.target.dataset.name;
 
-        const price = document.querySelector('option:checked').dataset.price;
+        const price = e.target.querySelector('option:checked').dataset.price;
+
+        // console.log(price);
 
         const qtyParse = parseInt(qty)
 
@@ -75,10 +69,30 @@ class Foods extends Component{
             qty: qtyParse,
         }
 
-        console.log('aca hay que pulir el QTY')
-        
-        this.props.addOrder(order);
+        let index = -1;
 
+        if(Array.isArray(this.props.reduxOrderTotal) && this.props.reduxOrderTotal.length){
+
+            this.props.reduxOrderTotal.map((item, pos) => {
+
+                if(item.name === order.name && item.size === order.size){
+
+                    order.qty += item.qty;
+
+                    index = pos;
+                }
+
+                return index;
+            })
+
+            this.props.updateOrder(index, order);
+        }
+
+        if(index < 0 ){
+
+            this.props.addOrder(order);
+        }
+        
         this.props.addCart(1);
 
         this.setState((prevState) => ({
@@ -196,6 +210,9 @@ const mapDispatchToProps = (dispatch) => {
 	//NOMBRE PROP - NOM PARAM
         addOrder: (orderObj) => {
             dispatch({type: 'ORDER_TOTAL', obj: orderObj})
+        },
+       updateOrder: (indexFound, objUpdate) => {
+            dispatch({type: 'UPDATE_ORDER', index: indexFound, obj: objUpdate})
         },
          addCart: (order) => {
             dispatch({type: 'ADD_TO_CART', qty: order})

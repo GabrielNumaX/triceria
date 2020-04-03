@@ -20,6 +20,13 @@ const initialState = {
       return {...previousState}
     }
 
+    else if(action.type === 'UPDATE_ORDER'){
+
+      previousState.orderTotal[action.index] = {...action.obj}
+
+      return {...previousState}
+    }
+
     else if (action.type === 'EMPTY_ORDER'){
 
       previousState.orderTotal = [];

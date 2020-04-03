@@ -15,6 +15,7 @@ class Order extends Component{
 
         this.state = {
             ordered: false,
+            message: 'Your Bill',
         }
     }
 
@@ -56,12 +57,17 @@ class Order extends Component{
         this.props.emptyOrder();
         this.props.emptyCart();
 
-        this.props.history.push('/');
+        this.setState({
+            ordered: true,
+            message: 'Thanks for Buying',
+            });
+
+        setTimeout( () => {
+            this.props.history.push('/');
+        }, 3000)
     }
 
     render() {
-
-        // console.log(this.props.reduxOrderTotal);
 
         const total = this.getTotal(this.props.reduxOrderTotal);
 
@@ -93,59 +99,67 @@ class Order extends Component{
 
                 <div className={css.DivOrder}>
 
-                    <h2>Your Bill</h2>
+                    <h2>{this.state.message}</h2>
 
-                    <div className={css.Bill}>
+                    {this.state.ordered ? 
 
-                        <table className={css.Table}>
-                            <thead>
-                                <tr>
-                                    <th colSpan='5'>
-                                        description
-                                    </th>
+                        <h3>Your Order is been processed</h3>
 
-                                    <th colSpan='1'>
-                                        qty
-                                    </th>
-                                    <th colSpan='1'>
-                                        price
-                                    </th>
-                                    <th colSpan='2'>
-                                        subtotal
-                                    </th>
-                                </tr>
-                            </thead>
+                        :
 
-                            <tbody>
+                        <div className={css.Bill}>
 
-                                {tBody}
+                            
 
-                            </tbody>
+                                <table className={css.Table}>
+                                    <thead>
+                                        <tr>
+                                            <th colSpan='5'>
+                                                description
+                                            </th>
 
-                            <tfoot>
-                            <tr>
-                                <td colSpan="7" 
-                                    style={{textAlign: 'right', paddingRight: '20px'}}
-                                    className={css.Total}>
-                                    Total:
-                                </td>
-                                <td>
-                                    {total}
-                                </td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                                            <th colSpan='1'>
+                                                qty
+                                            </th>
+                                            <th colSpan='1'>
+                                                price
+                                            </th>
+                                            <th colSpan='2'>
+                                                subtotal
+                                            </th>
+                                        </tr>
+                                    </thead>
 
-                        <div className={css.BuyNow}>
+                                    <tbody>
 
-                            <button onClick={this.confirmOrder}>Pay Now</button>
+                                        {tBody}
+
+                                    </tbody>
+
+                                    <tfoot>
+                                    <tr>
+                                        <td colSpan="7" 
+                                            style={{textAlign: 'right', paddingRight: '20px'}}
+                                            className={css.Total}>
+                                            Total:
+                                        </td>
+                                        <td>
+                                            {total}
+                                        </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                                <div className={css.BuyNow}>
+
+                                    <button onClick={this.confirmOrder}>Pay Now</button>
+
+                                </div>
 
                         </div>
 
-                    </div>
-
-                    
-                    
+                    }
+                              
                 </div>  
 
                 <Footer></Footer>
