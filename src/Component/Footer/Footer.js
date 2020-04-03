@@ -17,7 +17,7 @@ const Footer = (props) => {
             <div className={css.DivIcon}>   
                 <h3>NumaX &copy;2020 - &nbsp;</h3>
 
-                <a href="mailto:g.numa10@hotmail.com">
+                <a href="mailto:g.numa10@gmail.com">
                     <FontAwesomeIcon icon={faEnvelope} className={css.I}/>
                 </a>
     

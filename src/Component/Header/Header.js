@@ -13,7 +13,7 @@ const Header = (props) => {
 
             <div className={css.DivHeader}>
 
-                <h2>Welcome To GetFood</h2>
+                <h2>Welcome To FoodApp</h2>
             </div>
 
 

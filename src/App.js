@@ -6,6 +6,7 @@ import './App.css';
 
 import Header from './Component/Header/Header';
 import Main from './Component/Main/Main';
+import Foods from './Container/Foods/Foods';
 import Footer from './Component/Footer/Footer';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         <Header></Header>
 
         <Main></Main>
+
+        <Foods></Foods>
 
         <Footer></Footer>
 

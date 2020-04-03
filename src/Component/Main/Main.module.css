@@ -8,16 +8,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: url('../../Utils/img/foodApp.jpeg');
+    background-size: cover;
+    background-position: center;
 }
 
 .MainH1 {
     margin: 0;
     padding: 0;
     height: 80px; 
-    color: #006600;
     letter-spacing: 1px;
+    font-size: 4em;
+    color: #009900;
+    text-shadow: 0 0 22px black;
 }
 
-/* .DivSlogan {
-
-} */
+.DivSlogan {
+    margin-top: 10px;
+    font-size: 1.8em;
+    color: #009900;
+    text-shadow: 0 0 22px black;
+}
