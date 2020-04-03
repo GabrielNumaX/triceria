@@ -1,50 +1,45 @@
+
+
 const initialState = {
-    selectedFoods: [
-            {
-                id: null,
-                name: '',
-                img: '',
-                sizes: [],
-                qty: null,
-            }
-        ],
-        orderTotal: [
-            {
-                id: null,
-                name: '',
-                img: '',
-                sizes: [],
-                qty: null,
-            }
-        ],
+        orderTotal: [],
         cart: 0,
   }
 
   const MainReducer = (previousState = initialState, action) => {
-    if(action.type === 'ADD_FOOD'){
+    
+    if(action.type === 'ORDER_TOTAL'){
 
-      previousState.selectedFoods.push(action.obj)
-       return {...previousState};
-    }
-
-    else if(action.type === 'CART_TOTAL'){
-
-      previousState.shopItems.push(action.shopObj);
+      previousState.orderTotal.push(action.obj);
       return{...previousState};
     }
 
-    else if (action.type === 'EMPTY_GLOBAL_STATE'){
+    else if(action.type === 'CLONE_LOCAL'){
 
-      previousState.selectedFoods = [];
-      previousState.cart = 0;
+      previousState.orderTotal = [...action.local]
 
       return {...previousState}
     }
 
-    else if (action.type === 'FILL_GLOBAL_STATE'){
+    else if (action.type === 'EMPTY_ORDER'){
 
-        previousState.filteredItems = [...action.arr]
+      previousState.orderTotal = [];
+
+      return {...previousState}
     }
+
+    else if (action.type === 'ADD_TO_CART'){
+
+        previousState.cart = previousState.cart + action.qty;
+
+        return {...previousState}
+    }
+    else if (action.type === 'EMPTY_CART'){
+
+      previousState.cart = 0;
+
+      return {...previousState}
+  }
+
     return {...previousState}
   }
   

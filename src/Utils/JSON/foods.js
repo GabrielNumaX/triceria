@@ -54,7 +54,7 @@ export const foods = [
 	            price: 150
 	            },
 	            {
-	            size: 'a whole chicken',
+	            size: 'whole',
 	            price: 300
 	            },
             ]

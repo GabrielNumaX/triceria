@@ -1,13 +1,18 @@
 import React from 'react';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
-import Header from './Component/Header/Header';
-import Main from './Component/Main/Main';
-import Foods from './Container/Foods/Foods';
-import Footer from './Component/Footer/Footer';
+// import Header from './Component/Header/Header';
+// import Main from './Component/Main/Main';
+// import Foods from './Component/Foods/Foods';
+// import Footer from './Component/Footer/Footer';
+
+import Home from './Container/Home/Home';
+
+import Order from './Container/Order/Order';
+
 
 function App() {
   return (
@@ -15,22 +20,16 @@ function App() {
 
       <BrowserRouter>
 
-        {/* <Route path="/" component={Header}/> */}
+        <Switch>
 
-        <Header></Header>
+          <Route path="/" exact component={Home}></Route>
 
-        <Main></Main>
+          <Route path="/order" component={Order}></Route>
 
-        <Foods></Foods>
-
-        <Footer></Footer>
+        </Switch>
 
       </BrowserRouter>
 
-      {/* <Header></Header>
-
-      <Main></Main> */}
-      
     </div>
   );
 }

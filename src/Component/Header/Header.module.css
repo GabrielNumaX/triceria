@@ -32,6 +32,38 @@
 
 .LinkHeader {
     text-decoration: none;
-    color: black;
+    /* color: black; */
+    /* color: #f2f20d; */
+    color: whitesmoke;
     margin-right: 10px;
+}
+
+.Cart {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    /* background-color: #006600; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.I {
+    font-size: 18px;
+    color: whitesmoke;
+    margin-left: 6px;
+}
+
+.CartShop {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    border-radius: 50%;
+    /* background-color: #f2f20d; */
+    background-color: #006600;
+    color: #f2f20d;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: center;
+    top: -14px;
 }
